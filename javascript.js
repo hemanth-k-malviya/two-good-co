@@ -63,47 +63,63 @@ loadinganimatio()
 // }
 // loading2animatio()
 
-document.addEventListener("mousemove", function (dets) {
+// document.addEventListener("mousemove", function (dets) {
 
-    gsap.to(".cursor", {
-        left: dets.x,
-        top: dets.y
-    })
-
-})
-document.addEventListener("mouseleave", function (dets) {
-
-    gsap.to("#child1", {
-        transform: ' translate(-50%,-50%)'
-    })
-
-})
-
-document.querySelector("#child").addEventListener("mouseenter",function(){
-    gsap.to(".cursor", {
-       transform:'translate(-50%,-50%) scale(1)'
-    })
-
-})
-document.querySelector("#child1").addEventListener("mouseleave",function(){
-    gsap.to(".cursor", {
-       transform:'translate(-50%,-50%) scale(0)'
-    })
-
-})
-
-// document.querySelectorAll(".child")
-// elem.forEach(function (elem) {
-//     addEventListener.addEventListener(("mouseleave", function () {
-//         gsap.to(".cursor", {
-//             transform: 'translate(-50%,-50%) scale(1)'
-//         })
-//     }))
-
-//     addEventListener.addEventListener(("mousemove", function () {
-//         gsap.to(".cursor", {
-//             transform: 'translate(-50%,-50%) scale(0)'
-//         })
-//     }))
+//     gsap.to(".cursor", {
+//         left: dets.x,
+//         top: dets.y
+//     })
 
 // })
+
+// let a = document.querySelectorAll(".child").forEach(function (elem) {
+//     elem.addEventListener("mousemove", function () {
+//         gsap.to(".cursor", {
+//             transform: 'translate(-50%,-50%) scale(1)',
+//         });
+//     });
+
+//     elem.addEventListener("mouseleave", function () {
+//         gsap.to(".cursor", {
+//             transform: 'translate(-50%,-50%) scale(0)',
+//         });
+//     });
+// });
+
+
+function getRandomColor() {
+    const letters = "0123456789ABCDEF";
+    let color = "#";
+    for (let i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
+
+document.addEventListener("mousemove", function (dets) {
+    gsap.to(".cursor", {
+        left: dets.x,
+        top: dets.y,
+        duration: 0.2,
+        ease: "power2.out"
+    });
+});
+
+document.querySelectorAll(".child").forEach(function (elem) {
+    elem.addEventListener("mousemove", function () {
+        gsap.to(".cursor", {
+            scale: 1,
+            backgroundColor: getRandomColor(),
+            duration:0.9,
+            ease: "power2.out"
+        });
+    });
+
+    elem.addEventListener("mouseleave", function () {
+        gsap.to(".cursor", {
+            scale: 0,
+            duration: 0.3,
+            ease: "power2.out"
+        });
+    });
+});
