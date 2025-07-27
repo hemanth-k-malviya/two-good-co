@@ -110,7 +110,7 @@ document.querySelectorAll(".child").forEach(function (elem) {
         gsap.to(".cursor", {
             scale: 1,
             backgroundColor: getRandomColor(),
-            duration:0.9,
+            duration:1,
             ease: "power2.out"
         });
     });
